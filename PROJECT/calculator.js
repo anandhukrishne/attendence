@@ -4,21 +4,27 @@ const credits = {
     ICS111: 5,
     IMA111: 4,
     IHS112: 1,
-    IEC112: 5
+    IEC111: 5
 };
 const totalClassesTaken = {
-    ICS111: 48,
-    ICS112: 31,
-    IEC111: 53,
-    IMA111: 38,
-    IHS111: 32,
+    ICS111: 54,
+    ICS112: 49,
+    IEC111: 50,
+    IMA111: 41,
+    IHS111: 28,
     IHS112: 8
 };
 
-function findsub() {
-    const subject = document.getElementById("selectedsubject").value;
 
-    const percentage = Number(prompt("Enter your current attendance percentage:"));
+function findsub() {
+    
+    const subject = localStorage.getItem("subject");
+
+    if (!subject) {
+        alert("ERROR: No subject found. Please go back and select a subject first.");
+        return;
+    }
+    const percentage = Number(document.getElementById("percentage").value);
 
     const totalTaken = totalClassesTaken[subject];
 
@@ -37,15 +43,11 @@ function findsub() {
 
     x = x - 1;
 
-    alert(
-`For ${subject}
-
-It looks like
-Your Current Attendance Percentage is ${percentage}%
-So the classes you attended so far: ${attended.toFixed(0)} 
-There are ${future} more classes
-You have to attend ${future-x} more classess to safely land at ${(((attended+future-x)/(totalTaken+future))*100).toFixed(2)}%
-Maximum future classes you can miss: ${x}`
-    );
+document.getElementById("final").innerHTML = (`
+<table border="2" cellpadding="5px" align="center">
+    <tr><th>Current Attendance</th><th>Classes Attended</th><th>Future Classes</th><th>More Classes Required</th><th>Missable</th></tr>
+    <tr><td>${percentage}%</td><td>${attended.toFixed(0)}</td><td>${future}</td><td>${future-x}</td><td>${x}</td></tr>
+</table>
+    `);
 }
 

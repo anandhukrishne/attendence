@@ -4,15 +4,29 @@
     <link rel="stylesheet" href="styles.css">
     <script src="calculator.js" defer></script>
     <style>
+        table th, table td {
+            font-family: monospace;
+            font-size: 45px;
+            color: white ;
+            text-align: center;
+            text-shadow: none;
+            -webkit-text-stroke: 1px;
+            -webkit-text-stroke-color: black;
+
+        }
         input{
-            width: 300px;
-            height: 50px;
+            width: 200px;
+            height: 60px;
+            font-family: "Minecraft";
         }
         button{
+            font-family: "Minecraft";
             width:425px;
         }
         select{
-            height:50px;
+            font-family: "Minecraft";
+            height: 60px;
+            width: 250px;
         }
         h1{
             margin-bottom:10px;
@@ -20,21 +34,34 @@
         body{
             align-items: center;
         }
+        select:hover{
+            background-color: gray;
+        }
+
     </style>
 </head>
 <body>
     <div class="background"></div>
-    <h1>Choose Subject</h1>
-        <select id="selectedsubject">
+        <select id="selectedsubject" >
             <option>ICS112</option>
             <option>ICS111</option>
             <option>IMA111</option>
             <option>IHS111</option>
             <option>IHS112</option>
-            <option>IEC112</option>
-        </select><input type="submit" value="CALCULATE" class="titlescreen" onclick="findsub()"><br>
-        <button style="width:425px;" class="titlescreen" onclick="window.location.href='Home.html'">BACK HOME</button>
-
+            <option>IEC111</option>
+        </select>
+            <input class="titlescreen" type="number" id="percentage" style="width: auto;height: 50px;" >
+            <input type="submit" class="titlescreen" onclick="findsub()" id="subsub" value="Caclulate">
+            <div id="final" style="margin-top: 90px;"></div>
+        <button style="width:425px;" class="titlescreen" onclick="window.location.href='Home.html'" >BACK HOME</button>
+        <script>
+            button = document.getElementById("subsub");
+            button.addEventListener("click",function displaypage(){
+    const subject = document.getElementById("selectedsubject").value;
+    localStorage.setItem("subject", subject);
+    // window.location.href = "display.html";
+});
+        </script>
     </div>
 </body>
 </html>
