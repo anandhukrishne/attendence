@@ -1,9 +1,9 @@
 const credits = {
-    IHS121: 3,
-    ICS122: 5,
+    IHS121: 1,
+    ICS122: 4,
     ICS121: 5,
     IMA121: 4,
-    ICS123: 1,
+    ICS123: 4,
     IEC121: 5
 };
 
