@@ -19,7 +19,7 @@ const translation = {
 
 const timetable = {
     monday: [2, 1, 1, 0, 0, 1],
-    tuesday: [0, 0, 3, 0, 0, 1],
+    tuesday: [0, 0, 2, 0, 0, 1],
     wednesday: [1, 1, 1, 1, 1, 1],
     thursday: [1, 1, 0, 0, 2, 1],
     friday: [1, 1, 0, 0, 1, 1]
@@ -73,19 +73,15 @@ function findsub() {
         return;
     }
     const percentage = Number(document.getElementById("percentage").value);
-    console.log("debug: ", percentage);
 
     const totalTaken = Number(totalClassesTaken[subject]);
-    console.log("debug: ", totalTaken);
 
     const attended = (percentage / 100) * totalTaken;
-    console.log("debug: ", attended);
 
     const future = totalClasses[subject] - totalTaken;
-    console.log("debug: ", future);
 
     let x = 0;
-    console.log("debug: ", x);
+
 
     while (true) {
         let finalAttendance = (attended + (future - x)) / (totalTaken + future);
@@ -95,7 +91,7 @@ function findsub() {
     }
 
     x = x - 1;
-
+    console.log(x);
     document.getElementById("final").innerHTML = (`
 <table border="2" cellpadding="5px" align="center">
     <tr><th colspan="5"><b>${translation[subject]}</b></th></tr>
