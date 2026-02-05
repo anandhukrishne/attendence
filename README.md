@@ -1,4 +1,4 @@
-# New V4.2 Beta has dropped
+# New V4.2 Official has dropped
 Visit:
 https://anandhukrishne.github.io/attendence/ 
 For the website  
