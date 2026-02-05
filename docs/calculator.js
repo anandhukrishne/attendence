@@ -37,7 +37,7 @@ const sem2 = {
 
 const subjects = ["ICS121", "ICS122", "ICS123", "IHS121", "IMA121", "IEC121"];
 
-const holidayDates = ["2026-01-14", "2026-01-26", "2026-03-04", "2026-03-20", "2026-03-31", "2026-04-03"];
+const holidayDates = ["2026-01-14", "2026-01-26", "2026-01-30", "2026-03-04", "2026-03-20", "2026-03-31", "2026-04-03"];
 const totalClassesTaken = { ICS121: 0, ICS122: 0, ICS123: 0, IHS121: 0, IMA121: 0, IEC121: 0 };
 
 let currentDate = new Date(startofsem);
