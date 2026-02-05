@@ -37,14 +37,24 @@ const sem2 = {
 
 const subjects = ["ICS121", "ICS122", "ICS123", "IHS121", "IMA121", "IEC121"];
 
-const totalClassesTaken = {
-    ICS121: Number(((today - startofsem) / (1000 * 60 * 60 * 24) * credits["ICS121"] / 7)).toFixed(0),
-    ICS122: Number(((today - startofsem) / (1000 * 60 * 60 * 24) * credits["ICS122"] / 7)).toFixed(0),
-    ICS123: Number(((today - startofsem) / (1000 * 60 * 60 * 24) * credits["ICS123"] / 7)).toFixed(0),
-    IHS121: Number(((today - startofsem) / (1000 * 60 * 60 * 24) * credits["IHS121"] / 7)).toFixed(0),
-    IMA121: Number(((today - startofsem) / (1000 * 60 * 60 * 24) * credits["IMA121"] / 7)).toFixed(0),
-    IEC121: Number(((today - startofsem) / (1000 * 60 * 60 * 24) * credits["IEC121"] / 7)).toFixed(0)
-};
+const holidayDates = ["2026-01-14", "2026-01-26", "2026-03-04", "2026-03-20", "2026-03-31", "2026-04-03"];
+const totalClassesTaken = { ICS121: 0, ICS122: 0, ICS123: 0, IHS121: 0, IMA121: 0, IEC121: 0 };
+
+let currentDate = new Date(startofsem);
+while (currentDate <= today) {
+    const dateString = currentDate.toISOString().split('T')[0];
+    if (!holidayDates.includes(dateString)) {
+        const dayName = currentDate.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
+        
+        if (timetable[dayName]) {
+            timetable[dayName].forEach((count, index) => {
+                const subCode = subjects[index];
+                totalClassesTaken[subCode] += count;
+            });
+        }
+    }
+    currentDate.setDate(currentDate.getDate() + 1);
+}
 const totalClasses = {
     ICS121: 0,
     ICS122: 0,
