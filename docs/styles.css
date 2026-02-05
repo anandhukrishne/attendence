@@ -26,7 +26,6 @@ p{
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: top left; 
-    animation: moveBackground 5s linear infinite alternate; 
     position: absolute;
     top: 0;
     left: 0;
